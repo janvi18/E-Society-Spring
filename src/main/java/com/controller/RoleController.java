@@ -29,7 +29,7 @@ public class RoleController {
 		return new ResponseEntity(HttpStatus.UNAUTHORIZED);
 	}
 	
-	@PostMapping("/role")//body 
+	@PostMapping("/role") 
 	public ResponseEntity<?> addRole(RoleBean roleBean) {
 
 		boolean ans = roleDao.addRole(roleBean);
@@ -38,9 +38,8 @@ public class RoleController {
 			return ResponseEntity.ok(roleBean);
 		}
 
-
 	
-	@PutMapping("/role")//body roleId roleName 
+	@PutMapping("/role")
 	public ResponseEntity<?> updateRole(RoleBean roleBean) {
 
 		boolean ans = roleDao.updateRole(roleBean);
@@ -61,7 +60,7 @@ public class RoleController {
 
 	
 	
-	@DeleteMapping("/role/{roleId}") //url 
+	@DeleteMapping("/role/{roleId}")
 	public String deleteRole(@PathVariable("roleId") int roleId) {
 		roleDao.deleteRole(roleId);
 		return "Deleted Role";
