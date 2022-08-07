@@ -16,19 +16,14 @@ public class MemberDao {
 	JdbcTemplate stmt;
 
 	public boolean addMember(MemberBean member) {
-		stmt.update("insert into member (membername,dob,age,contactnum) values (?,?,?,?) ", 
-				member.getMembername(),
-				member.getDob(), 
-				member.getAge(), 
-				member.getContactnum());
+		stmt.update("insert into member (membername,dob,age,contactnum) values (?,?,?,?) ", member.getMembername(),
+				member.getDob(), member.getAge(), member.getContactnum());
 		return false;
 	}
 
-	public boolean updateMember(MemberBean member) {
-		stmt.update("update  member set  title =   ? where memberid = ? ", member.getMembername(), member.getDob(),
-				member.getAge(), member.getContactnum());
-
-		return false;
+	public int updateMember(MemberBean member) {
+		return stmt.update("update  member set  title =   ? where memberid = ? ", member.getMembername(),
+				member.getDob(), member.getAge(), member.getContactnum());
 	}
 
 	public List<MemberBean> getAllMember() {
@@ -40,6 +35,10 @@ public class MemberDao {
 	public void deleteMember(int memberId) {
 		stmt.update("delete from member where memberid = ?", memberId);
 
+	}
+	
+	public int updateHouseForMember(int userId, int houseId) {
+		return stmt.update("update users set  houseid =   ? where userid = ? ", houseId, userId);
 	}
 
 }

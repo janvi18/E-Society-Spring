@@ -30,8 +30,8 @@ public class EventController {
 
 	@PutMapping("/event")
 	public ResponseEntity<?> updateEvent(EventBean eventBean) {
-		boolean ans = eventDao.updateEvent(eventBean);
-		if (ans == false) {
+		int ans = eventDao.updateEvent(eventBean);
+		if (ans < 0) {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		} else {
 			return ResponseEntity.ok(eventBean);

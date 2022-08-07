@@ -21,11 +21,12 @@ public class EventDao {
 		return false;
 	}
 
-	public boolean updateEvent(EventBean event) {
-		stmt.update("update  event set  title =   ? where eventid = ? ", event.getEventDate(), event.getEventEndDate(),
-				event.getEventDetails());
-		return false;
-	}
+	public int updateEvent(EventBean event) {
+	
+	return stmt.update("update  event set  eventdate=?, eventenddate=? where eventid=? ", event.getEventDate(),
+				event.getEventEndDate(),event.getEventId());
+	
+		}
 
 	public List<EventBean> getAllEvent() {
 		List<EventBean> eventList = stmt.query("select * from event",

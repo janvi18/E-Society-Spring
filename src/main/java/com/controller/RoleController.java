@@ -42,9 +42,9 @@ public class RoleController {
 	@PutMapping("/role")
 	public ResponseEntity<?> updateRole(RoleBean roleBean) {
 
-		boolean ans = roleDao.updateRole(roleBean);
+		int ans = roleDao.updateRole(roleBean);
 
-		if (ans == false) {
+		if (ans < 0) {
 				return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		} else {
 			return ResponseEntity.ok(roleBean);

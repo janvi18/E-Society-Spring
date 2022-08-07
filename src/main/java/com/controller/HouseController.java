@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bean.HouseBean;
@@ -35,9 +36,9 @@ public class HouseController {
 	@PutMapping("/house")
 	public ResponseEntity<?> updateHouse(HouseBean houseBean) {
 
-		boolean ans = houseDao.updateHouse(houseBean);
+		int ans = houseDao.updateHouse(houseBean);
 
-		if (ans == false) {
+		if (ans < 0) {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		} else {
 			return ResponseEntity.ok(houseBean);
@@ -56,5 +57,6 @@ public class HouseController {
 		houseDao.deleteHouse(houseId);
 		return "Deleted House";
 	}
+
 
 }

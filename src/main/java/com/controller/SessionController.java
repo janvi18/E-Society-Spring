@@ -32,16 +32,17 @@ public class SessionController {
 	@PostMapping("/user")
 	public ResponseEntity<?> addUser(UserBean userBean) {
 
+		userBean.setRoleId(4);// user role
 		boolean ans = userDao.addUser(userBean);
-			return ResponseEntity.ok(userBean);
+		return ResponseEntity.ok(userBean);
 	}
 
 	@PutMapping("/user")
 	public ResponseEntity<?> updateUser(UserBean userBean) {
 
-		boolean ans = userDao.updateUser(userBean);
+		int ans = userDao.updateUser(userBean);
 
-		if (ans == false) {
+		if (ans < 0) {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		} else {
 			return ResponseEntity.ok(userBean);
@@ -55,15 +56,9 @@ public class SessionController {
 		return ResponseEntity.ok(users);
 	}
 
-	@DeleteMapping("/user/{userId}") 
+	@DeleteMapping("/user/{userId}")
 	public String deleteUser(@PathVariable("userId") int userId) {
 		userDao.deleteUser(userId);
 		return "Deleted User";
 	}
 }
-
-
-
-
-
-

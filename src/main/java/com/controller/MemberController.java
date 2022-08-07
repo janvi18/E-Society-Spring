@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bean.MemberBean;
@@ -29,8 +30,8 @@ public class MemberController {
 
 	@PutMapping("/member")
 	public ResponseEntity<?> updateMember(MemberBean memberBean) {
-		boolean ans = memberDao.updateMember(memberBean);
-		if (ans == false) {
+		int ans = memberDao.updateMember(memberBean);
+		if (ans < 0) {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		} else {
 			return ResponseEntity.ok(memberBean);
@@ -48,6 +49,14 @@ public class MemberController {
 	public String deleteMember(@PathVariable("memberId") int memberId) {
 		memberDao.deleteMember(memberId);
 		return "Deleted Member";
+	}
+	
+	@PostMapping("/maphouse")
+	public ResponseEntity<?> mapHouse(@RequestParam("userId") int userId, @RequestParam("houseId") int houseId) {
+		System.out.println(userId);
+		System.out.println(houseId);
+		memberDao.updateHouseForMember(userId, houseId);
+		return ResponseEntity.ok("House mapped");
 	}
 
 }

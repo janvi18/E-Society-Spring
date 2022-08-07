@@ -1,17 +1,17 @@
 package com.bean;
 
 public class UserBean {
-	
+
 	int userId;
+	int roleId, houseId;
 	String firstName;
 	String lastName;
 	String email;
 	String password;
-	String dob; 
+	String dob;
 	String contactNum;
-	String gender; 
-	
-	
+	String gender;
+
 	public int getUserId() {
 		return userId;
 	}
@@ -74,6 +74,22 @@ public class UserBean {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+
+	public int getHouseId() {
+		return houseId;
+	}
+
+	public void setHouseId(int houseId) {
+		this.houseId = houseId;
 	}
 
 }

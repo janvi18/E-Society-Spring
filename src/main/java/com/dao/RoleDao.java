@@ -18,7 +18,7 @@ public class RoleDao {
 
 	public boolean addRole(RoleBean role) {
 		stmt.update("insert into role (rolename) values (?)", role.getRoleName());
-	   return false;
+		return false;
 	}
 
 	public List<RoleBean> getAllRole() {
@@ -31,9 +31,7 @@ public class RoleDao {
 
 	}
 
-	public boolean updateRole(RoleBean role) {
-		stmt.update("update  role set  rolename =   ? where roleid = ? ", role.getRoleName(),role.getRoleId());
-
-		return false;
+	public int updateRole(RoleBean role) {
+		return stmt.update("update  role set  rolename =   ? where roleid = ? ", role.getRoleName(), role.getRoleId());
 	}
 }

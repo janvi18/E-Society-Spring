@@ -26,14 +26,15 @@ public class HouseDao {
 		return houseslist;
 	}
 
-	public boolean updateHouse(HouseBean house) {
-		stmt.update("update  house set  title =   ? where houseid = ? ", house.getTitle(), house.getContactNum());
-
-		return false;
+	public int updateHouse(HouseBean house) {
+		return stmt.update("update  house set  title =   ? where houseid = ? ", house.getTitle(),
+				house.getContactNum());
 	}
 
 	public void deleteHouse(int houseId) {
 		stmt.update("delete from house where houseid = ?", houseId);
 
 	}
+
+
 }
