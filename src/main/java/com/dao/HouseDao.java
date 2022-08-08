@@ -36,5 +36,8 @@ public class HouseDao {
 
 	}
 
+	public int updateHouseForUser(int userId, int houseId) {
+		return stmt.update("update house set  userid =   ? where houseid = ? ", houseId, userId);
+	}
 
 }

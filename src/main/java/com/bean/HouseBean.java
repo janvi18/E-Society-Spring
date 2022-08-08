@@ -3,6 +3,7 @@ package com.bean;
 public class HouseBean {
 
 	int houseid;
+	int userId;
 	String title;
 	String contactNum;
 	
@@ -23,5 +24,13 @@ public class HouseBean {
 	}
 	public void setContactNum(String contactNum) {
 		this.contactNum = contactNum;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 }

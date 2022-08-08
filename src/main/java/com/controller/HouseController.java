@@ -58,5 +58,11 @@ public class HouseController {
 		return "Deleted House";
 	}
 
+	@PostMapping("/mapuser")
+	public ResponseEntity<?> mapHouse(@RequestParam("userId") int userId, @RequestParam("houseId") int houseId) {
+		System.out.println(userId);
+		houseDao.updateHouseForUser(userId, houseId);
+		return ResponseEntity.ok("User mapped into house");
+	}
 
 }

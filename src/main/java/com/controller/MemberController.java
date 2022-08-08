@@ -56,7 +56,7 @@ public class MemberController {
 		System.out.println(userId);
 		System.out.println(houseId);
 		memberDao.updateHouseForMember(userId, houseId);
-		return ResponseEntity.ok("House mapped");
+		return ResponseEntity.ok("House mapped into user");
 	}
 
 }
