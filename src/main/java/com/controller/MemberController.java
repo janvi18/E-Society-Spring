@@ -50,13 +50,11 @@ public class MemberController {
 		memberDao.deleteMember(memberId);
 		return "Deleted Member";
 	}
-	
-	@PostMapping("/maphouse")
-	public ResponseEntity<?> mapHouse(@RequestParam("userId") int userId, @RequestParam("houseId") int houseId) {
-		System.out.println(userId);
+	@PostMapping("/mapmember")
+	public ResponseEntity<?> mapHouse(@RequestParam("houseId") int houseId,@RequestParam("memberId") int memberId) {
 		System.out.println(houseId);
-		memberDao.updateHouseForMember(userId, houseId);
-		return ResponseEntity.ok("House mapped into user");
+		memberDao.updateMemberForHouse(houseId, memberId);
+		return ResponseEntity.ok("Member mapped into house");
 	}
-
+	
 }

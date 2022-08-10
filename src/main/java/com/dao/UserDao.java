@@ -39,4 +39,5 @@ public class UserDao {
 		stmt.update("delete from users where userid = ?", userId);
 
 	}
+	
 }

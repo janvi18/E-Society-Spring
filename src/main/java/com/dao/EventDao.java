@@ -22,11 +22,11 @@ public class EventDao {
 	}
 
 	public int updateEvent(EventBean event) {
-	
-	return stmt.update("update  event set  eventdate=?, eventenddate=? where eventid=? ", event.getEventDate(),
-				event.getEventEndDate(),event.getEventId());
-	
-		}
+
+		return stmt.update("update  event set  eventdate=?, eventenddate=? where eventid=? ", event.getEventDate(),
+				event.getEventEndDate(), event.getEventId());
+
+	}
 
 	public List<EventBean> getAllEvent() {
 		List<EventBean> eventList = stmt.query("select * from event",
@@ -36,7 +36,11 @@ public class EventDao {
 
 	public void deleteEvent(int eventId) {
 		stmt.update("delete from event where eventid= ?", eventId);
+	}
 
+	public int updateEventForMember(int eventId, int houseId, int userId, int placeId) {
+		return stmt.update("update event set  houseid =  ? , userid = ? , placeid = ? where eventid = ? ", houseId,
+				userId, placeId, eventId);
 	}
 
 }

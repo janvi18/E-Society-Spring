@@ -2,8 +2,16 @@ package com.bean;
 
 public class MemberBean {
 
-	int memberid;
+	int memberid, houseid;
 	String membername, dob, age, contactnum;
+
+	public int getHouseid() {
+		return houseid;
+	}
+
+	public void setHouseid(int houseid) {
+		this.houseid = houseid;
+	}
 
 	public int getMemberid() {
 		return memberid;
