@@ -32,12 +32,15 @@ public class UserDao {
 	public int updateUser(UserBean user) {
 		return stmt.update("update users set  firstname =   ? where userid = ? ", user.getFirstName(),
 				user.getUserId());
-
 	}
 
 	public void deleteUser(int userId) {
 		stmt.update("delete from users where userid = ?", userId);
 
 	}
-	
+
+	public int updateHouseForUser(int roleId, int houseId, int userId) {
+		return stmt.update("update users set  roleid =   ?, houseid = ?  where userid = ? ", roleId, houseId, userId);
+	}
+
 }

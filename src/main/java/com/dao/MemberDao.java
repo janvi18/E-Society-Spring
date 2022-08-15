@@ -36,7 +36,8 @@ public class MemberDao {
 		stmt.update("delete from member where memberid = ?", memberId);
 
 	}
+
 	public int updateMemberForHouse(int houseId, int memberId) {
-		return stmt.update("update member set  houseid =   ? where memberid = ? ", houseId,memberId);
+		return stmt.update("update member set  houseid =   ? where memberid = ? ", houseId, memberId);
 	}
 }

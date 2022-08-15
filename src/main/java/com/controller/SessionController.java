@@ -62,6 +62,13 @@ public class SessionController {
 		userDao.deleteUser(userId);
 		return "Deleted User";
 	}
-	
-	
+
+	@PostMapping("/mapuser")
+	public ResponseEntity<?> mapUser(@RequestParam("roleId") int roleId, 
+			@RequestParam("houseId") int houseId,@RequestParam("userId") int userId) {
+
+		userDao.updateHouseForUser(roleId, houseId, userId);
+		return ResponseEntity.ok("User mapped");
+	}
+
 }
